@@ -83,11 +83,22 @@
     }
     
     //if position over limit and !dragging then change state to loading
-    if (self.state != BPRPullToRefreshStateLoading) {
+    if (_state != BPRPullToRefreshStateLoading) {
         CGFloat scrollOffsetThreshold = _refreshView.thresholdHeight + _originalContentInsets.top;
         
+        //states
+        if (!_scrollView.isDragging && _state == BPRPullToRefreshStateTriggered) {
+            _state = BPRPullToRefreshStateLoading;
+        } else if (position.y < scrollOffsetThreshold && _scrollView.isDragging && _state == BPRPullToRefreshStateIdle) {
+            _state = BPRPullToRefreshStateTriggered;
+        } else if (position.y >= scrollOffsetThreshold && _state != BPRPullToRefreshStateIdle) {
+            _state = BPRPullToRefreshStateIdle;
+        }
     } else {
-        
+        _scrollView.contentInset = UIEdgeInsetsMake(_refreshView.thresholdHeight,
+                                                    _originalContentInsets.left,
+                                                    _originalContentInsets.bottom,
+                                                    _originalContentInsets.right);
     }
 }
 
