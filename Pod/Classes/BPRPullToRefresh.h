@@ -13,8 +13,7 @@
 typedef NS_ENUM(NSUInteger, BPRPullToRefreshState) {
     BPRPullToRefreshStateIdle = 0,
     BPRPullToRefreshStateTriggered,
-    BPRPullToRefreshStateLoading,
-    BPRPullToRefreshStateAll = 10
+    BPRPullToRefreshStateLoading
 };
 
 @interface BPRPullToRefresh : NSObject

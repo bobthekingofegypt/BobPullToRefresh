@@ -8,6 +8,7 @@
 
 #import "BPRPullToRefresh.h"
 
+#import <KVOController/FBKVOController.h>
 #import "BPRRefreshView.h"
 
 @implementation BPRPullToRefresh {
@@ -16,6 +17,7 @@
     void (^_actionHandler)(void);
     
     UIEdgeInsets _originalContentInsets;
+    FBKVOController *_observerController;
 }
 
 - (id) initWithRefreshView:(BPRRefreshView *)refreshView scrollView:(UIScrollView *)scrollView actionHandler:(void (^)(void))actionHandler {
@@ -26,25 +28,29 @@
         _actionHandler = actionHandler;
         
         UIEdgeInsets originalContentInsets = scrollView.contentInset;
-        //make a new copy of the original insets
+        //make a new copy of the original insets don't reference the original struct
         _originalContentInsets = UIEdgeInsetsMake(originalContentInsets.top,
                                                   originalContentInsets.left,
                                                   originalContentInsets.bottom,
                                                   originalContentInsets.right);
         
-        [scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
-        [scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-        [scrollView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
+        _observerController = [FBKVOController controllerWithObserver:self];
+        [self attachObservers:scrollView];
     }
     
     return self;
 }
 
+- (void)attachObservers:(UIScrollView *)scrollView {
+    [_observerController observe:scrollView keyPath:@"contentOffset"
+                         options:NSKeyValueObservingOptionNew block:^(BPRPullToRefresh *pullToRefresh, UIScrollView *scrollView, NSDictionary *change) {
+        CGPoint point = [change[NSKeyValueChangeNewKey] CGPointValue];
+        [self adjustForNewPosition:point];
+        [self layoutRefreshView];
+    }];
+}
+
 - (void)layoutRefreshView {
-    if (_scrollView.contentOffset.y > 0) {
-        return;
-    }
-    
     BPRRefreshViewLocationType locationType = _refreshView.locationType;
     
     switch (locationType) {
@@ -61,19 +67,6 @@
             break;
     }
     
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if([keyPath isEqualToString:@"contentOffset"]) {
-        CGPoint point = [[change valueForKey:NSKeyValueChangeNewKey] CGPointValue];
-        NSLog(@"Content offset changed - %@", NSStringFromCGPoint(point));
-        [self adjustForNewPosition:point];
-        [self layoutRefreshView];
-    } else if([keyPath isEqualToString:@"contentSize"]) {
-        NSLog(@"Content size changed");
-    } else if([keyPath isEqualToString:@"frame"]) {
-        NSLog(@"Content frame changed");
-    }
 }
 
 - (void)adjustForNewPosition:(CGPoint)position {

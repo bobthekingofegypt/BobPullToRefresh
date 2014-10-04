@@ -35,4 +35,8 @@ static char UIScrollViewPullToRefresh;
     [self didChangeValueForKey:@"BobPullToRefresh"];
 }
 
+- (BPRPullToRefresh *)pullToRefresh {
+    return objc_getAssociatedObject(self, &UIScrollViewPullToRefresh);
+}
+
 @end
