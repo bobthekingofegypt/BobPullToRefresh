@@ -8,11 +8,20 @@
 
 #import "BPRAppDelegate.h"
 
+#import "BPRViewController.h"
+
 @implementation BPRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    BPRViewController *controller = [[BPRViewController alloc] init];
+    
+    self.window.rootViewController = controller;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 							
