@@ -22,4 +22,8 @@ const static NSInteger kDefaultThresholdHeight = 60;
     return self;
 }
 
+- (void)updateForProgress:(CGFloat)progress withState:(BPRPullToRefreshState)state {
+    NSLog(@"Progress - %f", progress);
+}
+
 @end

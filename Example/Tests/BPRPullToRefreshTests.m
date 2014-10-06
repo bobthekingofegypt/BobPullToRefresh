@@ -10,7 +10,46 @@
 #import "BPRRefreshView.h"
 #import "BPRFakeScrollView.h"
 
+#import <OCMock/OCMock.h>
+
 SpecBegin(BPRPullToRefresh)
+
+describe(@"bob pull to refresh progress", ^{
+    
+    __block BPRPullToRefresh *sut;
+    __block BPRFakeScrollView *scrollView;
+    __block BPRRefreshView *refreshView;
+    __block id refreshViewMock;
+    
+    beforeEach(^{
+        scrollView = [[BPRFakeScrollView alloc] init];
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedTop];
+        refreshViewMock = OCMPartialMock(refreshView);
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshViewMock scrollView:(id)scrollView actionHandler:nil];
+    });
+    
+    it(@"should set the progress to match the offset and height settings", ^{
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -refreshView.thresholdHeight)];
+        OCMVerify([refreshViewMock updateForProgress:1.0 withState:BPRPullToRefreshStateTriggered]);
+    });
+    
+    it(@"should set the progress to match the offset and height settings and change to loading on trigger", ^{
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -refreshView.thresholdHeight)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -refreshView.thresholdHeight)];
+        OCMVerify([refreshViewMock updateForProgress:1.0 withState:BPRPullToRefreshStateTriggered]);
+        OCMVerify([refreshViewMock updateForProgress:1.0 withState:BPRPullToRefreshStateLoading]);
+    });
+    
+    it(@"should set the progress to match the offset and height 50%", ^{
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -refreshView.thresholdHeight/2.0)];
+        OCMVerify([refreshViewMock updateForProgress:30/60.0 withState:BPRPullToRefreshStateIdle]);
+    });
+    
+    it(@"should set the progress to match the offset and height above 100%", ^{
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -refreshView.thresholdHeight*2.0)];
+        OCMVerify([refreshViewMock updateForProgress:2.0 withState:BPRPullToRefreshStateTriggered]);
+    });
+});
 
 describe(@"bob pull to refresh initialisationg", ^{
     

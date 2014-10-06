@@ -92,6 +92,9 @@
                                                     _originalContentInsets.bottom,
                                                     _originalContentInsets.right);
     }
+    
+    CGFloat progress = ABS(position.y)/_refreshView.thresholdHeight;
+    [_refreshView updateForProgress:progress withState:_state];
 }
 
 
