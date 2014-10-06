@@ -43,7 +43,7 @@
 
 - (void)attachObservers:(UIScrollView *)scrollView {
     [_observerController observe:scrollView keyPath:@"contentOffset"
-                         options:NSKeyValueObservingOptionNew block:^(BPRPullToRefresh *pullToRefresh, UIScrollView *scrollView, NSDictionary *change) {
+                         options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial block:^(BPRPullToRefresh *pullToRefresh, UIScrollView *scrollView, NSDictionary *change) {
         CGPoint point = [change[NSKeyValueChangeNewKey] CGPointValue];
         [self adjustForNewPosition:point];
         [self layoutRefreshView];
@@ -75,16 +75,15 @@
         return;
     }
     
-    //if position over limit and !dragging then change state to loading
     if (_state != BPRPullToRefreshStateLoading) {
         CGFloat scrollOffsetThreshold = _refreshView.thresholdHeight + _originalContentInsets.top;
         
         //states
         if (!_scrollView.isDragging && _state == BPRPullToRefreshStateTriggered) {
             _state = BPRPullToRefreshStateLoading;
-        } else if (position.y < scrollOffsetThreshold && _scrollView.isDragging && _state == BPRPullToRefreshStateIdle) {
+        } else if (ABS(position.y) >= scrollOffsetThreshold && _scrollView.isDragging && _state == BPRPullToRefreshStateIdle) {
             _state = BPRPullToRefreshStateTriggered;
-        } else if (position.y >= scrollOffsetThreshold && _state != BPRPullToRefreshStateIdle) {
+        } else if (ABS(position.y) < scrollOffsetThreshold && _state != BPRPullToRefreshStateIdle) {
             _state = BPRPullToRefreshStateIdle;
         }
     } else {

@@ -589,6 +589,7 @@
 				<string>C415E75419E06AC5002F6AE2</string>
 				<string>C415E75619E06AE6002F6AE2</string>
 				<string>C4032B6B19E066E700C52719</string>
+				<string>C415E75919E07BCA002F6AE2</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -730,6 +731,8 @@
 				<string>C4032B6A19E066E700C52719</string>
 				<string>C415E75319E06AC5002F6AE2</string>
 				<string>C415E75519E06AE6002F6AE2</string>
+				<string>C415E75719E07BCA002F6AE2</string>
+				<string>C415E75819E07BCA002F6AE2</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1248,6 +1251,39 @@ fi
 		<dict>
 			<key>fileRef</key>
 			<string>C415E75519E06AE6002F6AE2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C415E75719E07BCA002F6AE2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>BPRFakeScrollView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C415E75819E07BCA002F6AE2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>BPRFakeScrollView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C415E75919E07BCA002F6AE2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C415E75819E07BCA002F6AE2</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
