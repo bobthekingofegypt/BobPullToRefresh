@@ -14,13 +14,15 @@
 @implementation BPRPullToRefresh {
     BPRRefreshView *_refreshView;
     UIScrollView *_scrollView;
-    void (^_actionHandler)(void);
+    void (^_actionHandler)(BPRPullToRefresh *pullToRefresh);
     
     UIEdgeInsets _originalContentInsets;
     FBKVOController *_observerController;
+    
+    BOOL triggeredActionHandler;
 }
 
-- (id) initWithRefreshView:(BPRRefreshView *)refreshView scrollView:(UIScrollView *)scrollView actionHandler:(void (^)(void))actionHandler {
+- (id) initWithRefreshView:(BPRRefreshView *)refreshView scrollView:(UIScrollView *)scrollView actionHandler:(void (^)(BPRPullToRefresh *))actionHandler {
     self = [super init];
     if (self) {
         _refreshView = refreshView;
@@ -66,7 +68,6 @@
         default:
             break;
     }
-    
 }
 
 - (void)adjustForNewPosition:(CGPoint)position {
@@ -78,25 +79,47 @@
     if (_state != BPRPullToRefreshStateLoading) {
         CGFloat scrollOffsetThreshold = _refreshView.thresholdHeight + _originalContentInsets.top;
         
-        //states
         if (!_scrollView.isDragging && _state == BPRPullToRefreshStateTriggered) {
             _state = BPRPullToRefreshStateLoading;
+            _scrollView.contentInset = UIEdgeInsetsMake(_refreshView.thresholdHeight,
+                                                        _originalContentInsets.left,
+                                                        _originalContentInsets.bottom,
+                                                        _originalContentInsets.right);
+            [_scrollView setContentOffset:CGPointMake(0, -_refreshView.thresholdHeight) animated:YES];
         } else if (ABS(position.y) >= scrollOffsetThreshold && _scrollView.isDragging && _state == BPRPullToRefreshStateIdle) {
             _state = BPRPullToRefreshStateTriggered;
         } else if (ABS(position.y) < scrollOffsetThreshold && _state != BPRPullToRefreshStateIdle) {
             _state = BPRPullToRefreshStateIdle;
         }
     } else {
-        _scrollView.contentInset = UIEdgeInsetsMake(_refreshView.thresholdHeight,
-                                                    _originalContentInsets.left,
-                                                    _originalContentInsets.bottom,
-                                                    _originalContentInsets.right);
+        if (ABS(position.y) == _refreshView.thresholdHeight && !triggeredActionHandler) {
+            if (_actionHandler) {
+                _actionHandler(self);
+            }
+            triggeredActionHandler = YES;
+        }
     }
     
     CGFloat progress = ABS(position.y)/_refreshView.thresholdHeight;
     [_refreshView updateForProgress:progress withState:_state];
 }
 
+- (void)dismiss {
+    _state = BPRPullToRefreshStateIdle;
+    triggeredActionHandler = NO;
+    
+    [UIView animateWithDuration:0.3
+                              delay:0
+                            options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             _scrollView.contentInset = UIEdgeInsetsMake(_originalContentInsets.top,
+                                                                         _originalContentInsets.left,
+                                                                         _originalContentInsets.bottom,
+                                                                         _originalContentInsets.right);
+                         }
+                         completion:NULL];
+    [_scrollView setContentOffset:CGPointMake(0, _originalContentInsets.top) animated:YES];
+}
 
 
 

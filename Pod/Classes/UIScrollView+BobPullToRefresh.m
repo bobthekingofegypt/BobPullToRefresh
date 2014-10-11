@@ -18,7 +18,7 @@ static char UIScrollViewPullToRefresh;
     
 @dynamic pullToRefresh;
 
-- (void)addPullToRefreshView:(BPRRefreshView *)view withActionHandler:(void (^)(void))actionHandler {
+- (void)addPullToRefreshView:(BPRRefreshView *)view withActionHandler:(void (^)(BPRPullToRefresh *pullToRefresh))actionHandler {
     
     BPRPullToRefresh *pullToRefresh = [[BPRPullToRefresh alloc] initWithRefreshView:view scrollView:self actionHandler:actionHandler];
     [self insertSubview:view atIndex:0];

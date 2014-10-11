@@ -15,6 +15,6 @@
 
 @property (nonatomic, strong, readonly) BPRPullToRefresh *pullToRefresh;
 
-- (void)addPullToRefreshView:(BPRRefreshView *)customView withActionHandler:(void (^)(void))actionHandler;
+- (void)addPullToRefreshView:(BPRRefreshView *)customView withActionHandler:(void (^)(BPRPullToRefresh *pullToRefresh))actionHandler;
 
 @end

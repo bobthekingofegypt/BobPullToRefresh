@@ -21,6 +21,8 @@ typedef NS_ENUM(NSUInteger, BPRPullToRefreshState) {
 @property (nonatomic, assign) BOOL enabled;
 @property (nonatomic, assign, readonly) BPRPullToRefreshState state;
 
-- (id) initWithRefreshView:(BPRRefreshView *)refreshView scrollView:(UIScrollView *)scrollView actionHandler:(void (^)(void))actionHandler;
+- (id) initWithRefreshView:(BPRRefreshView *)refreshView scrollView:(UIScrollView *)scrollView actionHandler:(void (^)(BPRPullToRefresh *pullToRefresh))actionHandler;
+
+- (void)dismiss;
 
 @end

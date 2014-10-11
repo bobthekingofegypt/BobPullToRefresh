@@ -10,6 +10,10 @@
 
 @implementation BPRFakeScrollView
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated {
+    self.contentOffset = contentOffset;
+}
+
 - (void)simulateToOffsetDragging:(CGPoint)offset {
     self.isDragging = YES;
     self.contentOffset = offset;

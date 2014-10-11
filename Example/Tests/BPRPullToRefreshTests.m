@@ -51,7 +51,7 @@ describe(@"bob pull to refresh progress", ^{
     });
 });
 
-describe(@"bob pull to refresh initialisationg", ^{
+describe(@"bob pull to refresh initialisation", ^{
     
     __block BPRPullToRefresh *sut;
     __block BPRFakeScrollView *scrollView;
@@ -148,19 +148,19 @@ describe(@"bob pull to refresh view frames", ^{
     });
     
     it(@"should set the frame for scale to match offset when dragging", ^{
-        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
-        
         refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeScale];
         sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
         
         expect(refreshView.frame).to.equal(CGRectMake(0, -90, 280, 90));
     });
     
     it(@"should set the frame for fixed top to match offset when dragging", ^{
-        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
-        
         refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedTop];
         sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
         
         expect(refreshView.frame).to.equal(CGRectMake(0, -90, 280, refreshView.thresholdHeight));
     });
@@ -172,6 +172,66 @@ describe(@"bob pull to refresh view frames", ^{
         sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
         
         expect(refreshView.frame).to.equal(CGRectMake(0, -refreshView.thresholdHeight, 280, refreshView.thresholdHeight));
+    });
+    
+    it(@"should set the content insets after triggering load", ^{
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -90)];
+        
+        expect(scrollView.contentInset).to.equal(UIEdgeInsetsMake(refreshView.thresholdHeight, 0, 0, 0));
+    });
+    
+    it(@"should set the content offsets after triggering load", ^{
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -90)];
+        
+        expect(scrollView.contentOffset).to.equal(CGPointMake(0, -refreshView.thresholdHeight));
+    });
+    
+    it(@"should reset the content offsets after triggering action dismiss", ^{
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -90)];
+        
+        [sut dismiss];
+        
+        expect(scrollView.contentOffset).to.equal(CGPointMake(0, 0));
+    });
+    
+    it(@"should reset the content insets after triggering action dismiss", ^{
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -90)];
+        
+        [sut dismiss];
+        
+        expect(scrollView.contentInset).to.equal(UIEdgeInsetsMake(0, 0, 0, 0));
+    });
+    
+    it(@"should reset the original content insets after triggering action dismiss", ^{
+        refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
+        
+        scrollView.contentInset = UIEdgeInsetsMake(1, 2, 3, 4);
+        
+        sut = [[BPRPullToRefresh alloc] initWithRefreshView:refreshView scrollView:(id)scrollView actionHandler:nil];
+        
+        
+        [scrollView simulateToOffsetDragging:CGPointMake(0, -90)];
+        [scrollView simulateToOffsetNoDragging:CGPointMake(0, -90)];
+        
+        [sut dismiss];
+        
+        expect(scrollView.contentInset).to.equal(UIEdgeInsetsMake(1, 2, 3, 4));
     });
 });
 

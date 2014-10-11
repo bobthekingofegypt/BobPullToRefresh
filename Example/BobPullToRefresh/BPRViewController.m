@@ -10,6 +10,7 @@
 
 #import <UIScrollView+BobPullToRefresh.h>
 #import <BPRRefreshView.h>
+#import <BPRPullToRefresh.h>
 
 @interface BPRViewController ()
 
@@ -27,8 +28,10 @@
     
     BPRRefreshView *refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeScale];
     refreshView.backgroundColor = [UIColor redColor];
-    [tableView addPullToRefreshView:refreshView withActionHandler:^{
-        //no-op
+    [tableView addPullToRefreshView:refreshView withActionHandler:^(BPRPullToRefresh *pullToRefresh){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [pullToRefresh dismiss];
+        });
     }];
     
 }

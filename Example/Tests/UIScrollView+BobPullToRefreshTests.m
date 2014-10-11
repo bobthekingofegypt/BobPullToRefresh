@@ -28,7 +28,7 @@ describe(@"scrollview category", ^{
     it(@"should set pull to refresh control on add", ^{
         BPRRefreshView *refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedTop];
         
-        [sut addPullToRefreshView:refreshView withActionHandler:^{
+        [sut addPullToRefreshView:refreshView withActionHandler:^(BPRPullToRefresh *pullToRefresh){
             //noop
         }];
         

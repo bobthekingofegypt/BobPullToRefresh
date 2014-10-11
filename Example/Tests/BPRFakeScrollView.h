@@ -16,6 +16,7 @@
 @property (nonatomic, assign) CGRect bounds;
 @property (nonatomic, assign) CGRect frame;
 
+- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;
 
 - (void)simulateToOffsetDragging:(CGPoint)offset;
 - (void)simulateToOffsetNoDragging:(CGPoint)offset;
