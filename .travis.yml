@@ -1,6 +1,9 @@
 # reference: http://www.objc.io/issue-6/travis-ci.html
 
 language: objective-c
-# before_install: cd Example && pod install && cd -
+before_install:
+  - brew uninstall xctool
+  - brew update
+  - brew install xctool --HEAD
 script:
     - ./scripts/generate-coverage-html
