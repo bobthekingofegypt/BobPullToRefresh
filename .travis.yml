@@ -5,5 +5,9 @@ before_install:
   - brew uninstall xctool
   - brew update
   - brew install xctool --HEAD
+  - sudo easy_install cpp-coveralls
 script:
-    - ./scripts/generate-coverage-html
+  - ./scripts/run-coverage
+
+after_success:
+  - ./coveralls.rb --extension m
