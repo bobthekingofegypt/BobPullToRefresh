@@ -9,8 +9,8 @@
 #import "BPRViewController.h"
 
 #import <UIScrollView+BobPullToRefresh.h>
-#import <BPRRefreshView.h>
 #import <BPRPullToRefresh.h>
+#import "BPRArrowRefreshView.h"
 
 @interface BPRViewController ()
 
@@ -21,13 +21,15 @@
 - (void)loadView {
     [super loadView];
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.view addSubview:tableView];
     
-    BPRRefreshView *refreshView = [[BPRRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeScale];
-    refreshView.backgroundColor = [UIColor redColor];
+    BPRRefreshView *refreshView = [[BPRArrowRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
     [tableView addPullToRefreshView:refreshView withActionHandler:^(BPRPullToRefresh *pullToRefresh){
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [pullToRefresh dismiss];

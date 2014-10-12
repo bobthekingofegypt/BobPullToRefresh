@@ -10,4 +10,6 @@
 
 @interface BPRArrowRefreshView : BPRRefreshView
 
+@property (nonatomic, strong) UILabel *stateLabel;
+
 @end

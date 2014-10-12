@@ -106,6 +106,24 @@ describe(@"bob pull to refresh basic transitions", ^{
 
 });
 
+describe(@"bob pull to refresh state string returns", ^{
+    
+    it(@"should return loading for loading state", ^{
+        NSString *text = NSStringFromBPRPullToRefreshState(BPRPullToRefreshStateLoading);
+        expect(text).to.equal(@"Loading");
+    });
+    it(@"should return ide for idle state", ^{
+        NSString *text = NSStringFromBPRPullToRefreshState(BPRPullToRefreshStateIdle);
+        expect(text).to.equal(@"Idle");
+    });
+    it(@"should return triggered for triggered state", ^{
+        NSString *text = NSStringFromBPRPullToRefreshState(BPRPullToRefreshStateTriggered);
+        expect(text).to.equal(@"Triggered");
+    });
+    
+});
+    
+
 describe(@"bob pull to refresh view frames", ^{
     
     __block BPRPullToRefresh *sut;
