@@ -1,3 +1,7 @@
+xcodeproj "BobPullToRefresh.xcodeproj", { 'Coverage' => :debug }
+
+link_with 'BobPullToRefresh', 'Tests'
+
 target 'BobPullToRefresh', :exclusive => true do
   pod "BobPullToRefresh", :path => "../"
 end

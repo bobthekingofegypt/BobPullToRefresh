@@ -1,0 +1,31 @@
+#!/bin/bash
+#########################################
+#
+# Simple script to execute the coverage command, will generate html docs in coverage dir
+#
+# Run from project root directory with ./scripts/generate-coverage-html
+#
+# Requirements:
+#	XCTool - https://github.com/facebook/xctool
+#	gcovr - http://gcovr.com/
+#
+# @author bob
+#
+########################################
+
+xctool  -workspace Example/BobPullToRefresh.xcworkspace \
+        -scheme BobPullToRefresh  \
+        -configuration Coverage \
+        -sdk iphonesimulator \
+        -reporter pretty \
+        -reporter junit:junit.xml \
+        clean build test \
+        -test-sdk iphonesimulator7.0 \
+
+mkdir -p coverage/
+
+xctool -workspace Example/BobPullToRefresh.xcworkspace \
+       -scheme  BobPullToRefresh \
+       -configuration Coverage \
+       -sdk iphonesimulator \
+       -showBuildSettings | grep CONFIGURATION_TEMP_DIR | awk -F' ' '{print $3}' | xargs -I% gcovr % --exclude '.*External.*' --exclude '.*Tests.*' --exclude '.*main.m.*' -e /Applications --html --html-detail -o coverage/coverage.html

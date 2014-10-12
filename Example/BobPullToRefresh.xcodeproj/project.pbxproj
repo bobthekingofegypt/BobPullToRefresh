@@ -26,6 +26,8 @@
 		C415E75619E06AE6002F6AE2 /* UIScrollView+BobPullToRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C415E75519E06AE6002F6AE2 /* UIScrollView+BobPullToRefreshTests.m */; };
 		C415E75919E07BCA002F6AE2 /* BPRFakeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C415E75819E07BCA002F6AE2 /* BPRFakeScrollView.m */; };
 		C4A093C219E928DB002D0090 /* BPRArrowRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A093C119E928DB002D0090 /* BPRArrowRefreshView.m */; };
+		C4A093C419EADA5A002D0090 /* GCovTestObserver.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4A093C319EADA5A002D0090 /* GCovTestObserver.mm */; };
+		C4A093C919EAEC78002D0090 /* BPRTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A093C819EAEC78002D0090 /* BPRTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 		35AFD982C81201AA32D3E57D /* Pods-BobPullToRefresh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobPullToRefresh.release.xcconfig"; path = "Pods/Target Support Files/Pods-BobPullToRefresh/Pods-BobPullToRefresh.release.xcconfig"; sourceTree = "<group>"; };
 		423664205FE762E1A50845A5 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		4920ED010366EB40BF6A86EB /* BobPullToRefresh.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BobPullToRefresh.podspec; path = ../BobPullToRefresh.podspec; sourceTree = "<group>"; };
+		5B6FEE2A293EF387AA873F0F /* Pods-BobPullToRefresh.coverage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobPullToRefresh.coverage.xcconfig"; path = "Pods/Target Support Files/Pods-BobPullToRefresh/Pods-BobPullToRefresh.coverage.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* BobPullToRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BobPullToRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +66,7 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		940FAB390B40BA7150B295FB /* Pods-BobPullToRefresh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BobPullToRefresh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BobPullToRefresh/Pods-BobPullToRefresh.debug.xcconfig"; sourceTree = "<group>"; };
+		A9CE6A88F36690F546110B16 /* Pods-Tests.coverage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.coverage.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.coverage.xcconfig"; sourceTree = "<group>"; };
 		C4032B6A19E066E700C52719 /* BPRRefreshViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRRefreshViewTests.m; sourceTree = "<group>"; };
 		C415E75319E06AC5002F6AE2 /* BPRPullToRefreshTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRPullToRefreshTests.m; sourceTree = "<group>"; };
 		C415E75519E06AE6002F6AE2 /* UIScrollView+BobPullToRefreshTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+BobPullToRefreshTests.m"; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		C415E75819E07BCA002F6AE2 /* BPRFakeScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRFakeScrollView.m; sourceTree = "<group>"; };
 		C4A093C019E928DB002D0090 /* BPRArrowRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPRArrowRefreshView.h; sourceTree = "<group>"; };
 		C4A093C119E928DB002D0090 /* BPRArrowRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRArrowRefreshView.m; sourceTree = "<group>"; };
+		C4A093C319EADA5A002D0090 /* GCovTestObserver.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GCovTestObserver.mm; sourceTree = "<group>"; };
+		C4A093C819EAEC78002D0090 /* BPRTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPRTest.m; sourceTree = "<group>"; };
 		E50EAB3E679E614E11DBB1B4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		FACA8E7A9FF14934BF7E0BAA /* libPods-BobPullToRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BobPullToRefresh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC3A8DABDC574E68B799F77B /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +176,8 @@
 				C415E75519E06AE6002F6AE2 /* UIScrollView+BobPullToRefreshTests.m */,
 				C415E75719E07BCA002F6AE2 /* BPRFakeScrollView.h */,
 				C415E75819E07BCA002F6AE2 /* BPRFakeScrollView.m */,
+				C4A093C319EADA5A002D0090 /* GCovTestObserver.mm */,
+				C4A093C819EAEC78002D0090 /* BPRTest.m */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -201,6 +209,8 @@
 				35AFD982C81201AA32D3E57D /* Pods-BobPullToRefresh.release.xcconfig */,
 				1091878AC530572A04D2A286 /* Pods-Tests.debug.xcconfig */,
 				423664205FE762E1A50845A5 /* Pods-Tests.release.xcconfig */,
+				5B6FEE2A293EF387AA873F0F /* Pods-BobPullToRefresh.coverage.xcconfig */,
+				A9CE6A88F36690F546110B16 /* Pods-Tests.coverage.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,9 +237,9 @@
 			productReference = 6003F58A195388D20070C39A /* BobPullToRefresh.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6003F5AD195388D20070C39A /* Tests */ = {
+		6003F5AD195388D20070C39A /* BobPullToRefreshTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BobPullToRefreshTests" */;
 			buildPhases = (
 				B75AD077FFD842F99D54A0EB /* Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
@@ -242,7 +252,7 @@
 			dependencies = (
 				6003F5B4195388D20070C39A /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = BobPullToRefreshTests;
 			productName = BobPullToRefreshTests;
 			productReference = 6003F5AE195388D20070C39A /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -276,7 +286,7 @@
 			projectRoot = "";
 			targets = (
 				6003F589195388D20070C39A /* BobPullToRefresh */,
-				6003F5AD195388D20070C39A /* Tests */,
+				6003F5AD195388D20070C39A /* BobPullToRefreshTests */,
 			);
 		};
 /* End PBXProject section */
@@ -380,9 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4A093C419EADA5A002D0090 /* GCovTestObserver.mm in Sources */,
 				C415E75419E06AC5002F6AE2 /* BPRPullToRefreshTests.m in Sources */,
 				C415E75619E06AE6002F6AE2 /* UIScrollView+BobPullToRefreshTests.m in Sources */,
 				C4032B6B19E066E700C52719 /* BPRRefreshViewTests.m in Sources */,
+				C4A093C919EAEC78002D0090 /* BPRTest.m in Sources */,
 				C415E75919E07BCA002F6AE2 /* BPRFakeScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +571,84 @@
 			};
 			name = Release;
 		};
+		C4A093C519EADAC7002D0090 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Coverage;
+		};
+		C4A093C619EADAC7002D0090 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6FEE2A293EF387AA873F0F /* Pods-BobPullToRefresh.coverage.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BobPullToRefresh/BobPullToRefresh-Prefix.pch";
+				INFOPLIST_FILE = "BobPullToRefresh/BobPullToRefresh-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Coverage;
+		};
+		C4A093C719EADAC7002D0090 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9CE6A88F36690F546110B16 /* Pods-Tests.coverage.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BobPullToRefresh.app/BobPullToRefresh";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tests/Tests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tests/Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Coverage;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -566,6 +656,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5BD195388D20070C39A /* Debug */,
+				C4A093C519EADAC7002D0090 /* Coverage */,
 				6003F5BE195388D20070C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -575,15 +666,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C0195388D20070C39A /* Debug */,
+				C4A093C619EADAC7002D0090 /* Coverage */,
 				6003F5C1195388D20070C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "BobPullToRefreshTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6003F5C3195388D20070C39A /* Debug */,
+				C4A093C719EADAC7002D0090 /* Coverage */,
 				6003F5C4195388D20070C39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
