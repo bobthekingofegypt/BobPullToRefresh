@@ -1,11 +1,11 @@
 #!/bin/bash
 
-xctool  -workspace Example/BobPullToRefresh.xcworkspace \
+xctool  -workspace BobPullToRefresh.xcworkspace \
         -scheme BobPullToRefresh  \
         -configuration Coverage \
         -sdk iphonesimulator \
         -reporter pretty \
         -reporter junit:junit.xml \
         clean build test \
-        -test-sdk iphonesimulator7.0
+        -test-sdk iphonesimulator7.1
 
