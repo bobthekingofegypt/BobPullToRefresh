@@ -11,8 +11,10 @@
 #import "UIScrollView+BobPullToRefresh.h"
 #import "BPRPullToRefresh.h"
 #import "BPRArrowRefreshView.h"
+#import "BPRTopTableViewCell.h"
+#import "OtherTableViewCell.h"
 
-@interface BPRViewController ()
+@interface BPRViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -24,9 +26,13 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.title = @"Demo";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.delegate = self;
+    tableView.dataSource = self;
     [self.view addSubview:tableView];
     
     BPRRefreshView *refreshView = [[BPRArrowRefreshView alloc] initWithLocationType:BPRRefreshViewLocationTypeFixedBottom];
@@ -35,8 +41,38 @@
             [pullToRefresh dismiss];
         });
     }];
-    
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 250.0f;
+    }
+    
+    return 60.0f;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        static NSString *firstReuseIdentifier = @"first-reuse";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:firstReuseIdentifier];
+        if (!cell) {
+            cell = [[BPRTopTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:firstReuseIdentifier];
+        }
+        
+        return cell;
+    }
+    
+    static NSString *otherReuseIdentifier = @"other-reuse";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:otherReuseIdentifier];
+    if (!cell) {
+        cell = [[OtherTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:otherReuseIdentifier];
+    }
+    
+    return cell;
+}
 
 @end
