@@ -1,13 +1,17 @@
 # BobPullToRefresh
 
-[![CI Status](http://img.shields.io/travis/bob/BobPullToRefresh.svg?style=flat)](https://travis-ci.org/bob/BobPullToRefresh)
+[![CI Status](http://img.shields.io/travis/bob/BobPullToRefresh.svg?style=flat)](https://travis-ci.org/bobthekingofegypt/BobPullToRefresh)
 [![Version](https://img.shields.io/cocoapods/v/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
 [![License](https://img.shields.io/cocoapods/l/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
 [![Platform](https://img.shields.io/cocoapods/p/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
 
+BobPullToRefresh is a simple pull to refresh control for iOS.  It is designed to make it easy to implement completely custom refresh animations.  It doesn't currently have any built in refresh views, it provides a BPRRefreshView class that can be subclassed to implement a refresh control.  An example is provided in the Demo project that shows how to recreate the contol shown below.
+
+![Demo](Docs/pull2refresh.png)
+
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and open BobPullToRefresh.xcworkspace.
 
 ## Requirements
 
