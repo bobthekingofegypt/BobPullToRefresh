@@ -29,6 +29,7 @@
     self.title = @"Demo";
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.backgroundColor = [UIColor colorWithRed:28/255.0 green:82/255.0 blue:162/255.0 alpha:1.0];
     tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;

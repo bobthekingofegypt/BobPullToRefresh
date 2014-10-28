@@ -38,7 +38,6 @@
         subTitle.textColor = [UIColor blackColor];
         
         [self addSubview:subTitle];
-
     }
     
     return self;

@@ -8,8 +8,10 @@
 
 #import "BPRRefreshView.h"
 
+/**
+ *  An example of a creating a BPRRefreshView, simply subclasses BPRRefreshView and
+ *  overrides the progress/state call to implement custom behaviour
+ */
 @interface BPRArrowRefreshView : BPRRefreshView
-
-@property (nonatomic, strong) UILabel *stateLabel;
 
 @end
