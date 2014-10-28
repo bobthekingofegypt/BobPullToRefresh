@@ -7,7 +7,7 @@
 
 BobPullToRefresh is a simple pull to refresh control for iOS.  It is designed to make it easy to implement completely custom refresh animations.  It doesn't currently have any built in refresh views, it provides a BPRRefreshView class that can be subclassed to implement a refresh control.  An example is provided in the Demo project that shows how to recreate the contol shown below.
 
-![Demo](Docs/pull2refresh.png)
+![Demo](Docs/pull2refresh.gif)
 
 ## Usage
 
