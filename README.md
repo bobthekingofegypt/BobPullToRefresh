@@ -1,6 +1,6 @@
 # BobPullToRefresh
 
-[![CI Status](http://img.shields.io/travis/bob/BobPullToRefresh.svg?style=flat)](https://travis-ci.org/bobthekingofegypt/BobPullToRefresh)
+![CI Status](https://travis-ci.org/bobthekingofegypt/BobPullToRefresh.svg?branch=master)
 [![Version](https://img.shields.io/cocoapods/v/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
 [![License](https://img.shields.io/cocoapods/l/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
 [![Platform](https://img.shields.io/cocoapods/p/BobPullToRefresh.svg?style=flat)](http://cocoadocs.org/docsets/BobPullToRefresh)
